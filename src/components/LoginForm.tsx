@@ -1,6 +1,6 @@
 import React, { useReducer, SyntheticEvent } from "react";
 
-import { login } from "../utils/auth";
+import { login } from "../utils";
 
 interface LoginFormProps {
   onLogin: () => void;

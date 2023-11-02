@@ -8,7 +8,7 @@ import JobDetail from "./components/JobDetail";
 import JobForm from "./components/JobForm";
 import NavBar from "./components/NavBar";
 
-import { isLoggedIn, logout } from "./utils/auth";
+import { isLoggedIn, logout, ProtectedRoute } from "./utils";
 
 const App = () => {
   const navigate = useNavigate();
@@ -39,7 +39,10 @@ const App = () => {
           <Routes>
             <Route path="/" element={<JobBoard />} />
             <Route path="/companies/:companyId" element={<CompanyDetail />} />
-            <Route path="/jobs/new" element={<JobForm />} />
+            <Route
+              path="/jobs/new"
+              element={<ProtectedRoute element={<JobForm />} />}
+            />
             <Route path="/jobs/:jobId" element={<JobDetail />} />
             <Route
               path="/login"
