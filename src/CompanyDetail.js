@@ -1,20 +1,22 @@
-import React, { Component } from 'react';
-import { companies } from './fake-data';
+import { useParams } from "react-router-dom";
+import { companies } from "./fake-data";
 
-export class CompanyDetail extends Component {
-  constructor(props) {
-    super(props);
-    const {companyId} = this.props.match.params;
-    this.state = {company: companies.find((company) => company.id === companyId)};
-  }
+const CompanyDetail = () => {
+  const { companyId } = useParams();
+  const company = companies.find((company) => company.id === companyId);
 
-  render() {
-    const {company} = this.state;
-    return (
-      <div>
-        <h1 className="title">{company.name}</h1>
-        <div className="box">{company.description}</div>
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      {company ? (
+        <>
+          <h1 className="title">{company.name}</h1>
+          <div className="box">{company.description}</div>
+        </>
+      ) : (
+        <p>Company not found</p>
+      )}
+    </div>
+  );
+};
+
+export default CompanyDetail;
