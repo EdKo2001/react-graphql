@@ -1,6 +1,6 @@
 import JobList from "./JobList";
 
-import { jobs } from "./fake-data";
+import { jobs } from "../data/fake-data";
 
 const JobBoard = () => {
   return (

@@ -1,5 +1,7 @@
 import Cookies from 'js-cookie';
 
+import { env } from '.';
+
 const accessTokenKey = 'accessToken';
 
 export function getAccessToken() {
@@ -7,7 +9,7 @@ export function getAccessToken() {
 }
 
 export async function login(email, password) {
-  const response = await fetch('http://localhost:9000/login', {
+  const response = await fetch(`${env.REACT_APP_API_URL}/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password })

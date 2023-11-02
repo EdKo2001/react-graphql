@@ -1,6 +1,6 @@
 import { useReducer } from "react";
 
-import { login } from "./auth";
+import { login } from "../utils/auth";
 
 const LoginForm = (props) => {
   const [formData, setFormData] = useReducer(

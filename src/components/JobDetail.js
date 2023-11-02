@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import { jobs } from "./fake-data";
+import { jobs } from "../data/fake-data";
 
 const JobDetail = () => {
   const { jobId } = useParams();

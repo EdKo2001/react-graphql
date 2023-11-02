@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 
-import CompanyDetail from "./CompanyDetail";
-import LoginForm from "./LoginForm";
-import JobBoard from "./JobBoard";
-import JobDetail from "./JobDetail";
-import JobForm from "./JobForm";
-import NavBar from "./NavBar";
+import CompanyDetail from "./components/CompanyDetail";
+import LoginForm from "./components/LoginForm";
+import JobBoard from "./components/JobBoard";
+import JobDetail from "./components/JobDetail";
+import JobForm from "./components/JobForm";
+import NavBar from "./components/NavBar";
 
-import { isLoggedIn, logout } from "./auth";
+import { isLoggedIn, logout } from "./utils/auth";
 
 const App = () => {
   const navigate = useNavigate();

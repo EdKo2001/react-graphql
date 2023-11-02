@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { companies } from "./fake-data";
+import { companies } from "../data/fake-data";
 
 const CompanyDetail = () => {
   const { companyId } = useParams();
