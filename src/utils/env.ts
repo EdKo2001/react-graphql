@@ -4,4 +4,6 @@ const envSchema = z.object({
     REACT_APP_API_URL: z.string().url(),
 });
 
-export const env = envSchema.parse(process.env);
+const env = envSchema.parse(process.env);
+
+export default env

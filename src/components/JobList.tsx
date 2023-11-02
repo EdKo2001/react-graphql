@@ -1,6 +1,19 @@
+import React from "react";
 import { Link } from "react-router-dom";
 
-const renderJob = (job) => {
+interface Job {
+  id: string;
+  title: string;
+  company: {
+    name: string;
+  } | null;
+}
+
+interface JobListProps {
+  jobs: Job[];
+}
+
+const renderJob = (job: Job) => {
   const title = job.company ? `${job.title} at ${job.company.name}` : job.title;
 
   return (
@@ -12,9 +25,7 @@ const renderJob = (job) => {
   );
 };
 
-const JobList = (props) => {
-  const { jobs } = props;
-
+const JobList: React.FC<JobListProps> = ({ jobs }) => {
   return <ul className="box">{jobs.map((job) => renderJob(job))}</ul>;
 };
 

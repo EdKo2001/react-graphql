@@ -1,29 +1,37 @@
-import { useReducer } from "react";
+import React, { useReducer, SyntheticEvent } from "react";
 
 import { login } from "../utils/auth";
 
-const LoginForm = (props) => {
+interface LoginFormProps {
+  onLogin: () => void;
+}
+
+interface FormData {
+  email: string;
+  password: string;
+  error: boolean;
+}
+
+const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
   const [formData, setFormData] = useReducer(
-    (prev, next) => {
+    (prev: FormData, next: Partial<FormData>) => {
       return { ...prev, ...next };
     },
     { email: "", password: "", error: false }
   );
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-
     setFormData({ [name]: value });
   };
 
-  const handleClick = (e) => {
+  const handleClick = (e: SyntheticEvent) => {
     e.preventDefault();
-
     const { email, password } = formData;
 
     login(email, password).then((ok) => {
       if (ok) {
-        props.onLogin();
+        onLogin();
       } else {
         setFormData({ error: true });
       }

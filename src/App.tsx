@@ -32,24 +32,23 @@ const App = () => {
   };
 
   return (
-    <div>
+    <>
       <NavBar loggedIn={loggedIn} onLogout={handleLogout} />
       <section className="section">
         <div className="container">
           <Routes>
-            <Route exact path="/" element={<JobBoard />} />
+            <Route path="/" element={<JobBoard />} />
             <Route path="/companies/:companyId" element={<CompanyDetail />} />
-            <Route exact path="/jobs/new" element={<JobForm />} />
+            <Route path="/jobs/new" element={<JobForm />} />
             <Route path="/jobs/:jobId" element={<JobDetail />} />
             <Route
-              exact
               path="/login"
               element={<LoginForm onLogin={handleLogin} />}
             />
           </Routes>
         </div>
       </section>
-    </div>
+    </>
   );
 };
 

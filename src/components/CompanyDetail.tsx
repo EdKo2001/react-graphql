@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+
 import { companies } from "../data/fake-data";
 
 const CompanyDetail = () => {

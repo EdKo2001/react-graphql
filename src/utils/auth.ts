@@ -1,18 +1,18 @@
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 
-import { env } from '.';
+import { env } from ".";
 
-const accessTokenKey = 'accessToken';
+const accessTokenKey = "accessToken";
 
 export function getAccessToken() {
   return Cookies.get(accessTokenKey);
 }
 
-export async function login(email, password) {
+export async function login(email: string, password: string) {
   const response = await fetch(`${env.REACT_APP_API_URL}/login`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email, password })
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password }),
   });
 
   if (response.ok) {
