@@ -15,7 +15,7 @@ const jobDetailFragment = gql`
 `;
 
 const createJobMutation = gql`
-  mutation CreateJob($input: CreateJobInput) {
+  mutation createJob($input: createJobInput) {
     job: createJob(input: $input) {
       ...JobDetail
     }
@@ -25,7 +25,7 @@ const createJobMutation = gql`
 
 const companyQuery = gql`
   query CompanyQuery($id: ID!) {
-    company(id: $id:string) {
+    company(id: $id) {
       id
       name
       description
@@ -39,7 +39,7 @@ const companyQuery = gql`
 
 const jobQuery = gql`
   query JobQuery($id: ID!) {
-    job(id: $id:string) {
+    job(id: $id) {
       ...JobDetail
     }
   }
@@ -94,5 +94,6 @@ export async function loadJobs() {
   const {
     data: { jobs },
   } = await client.query({ query: jobsQuery, fetchPolicy: "no-cache" });
+
   return jobs;
 }

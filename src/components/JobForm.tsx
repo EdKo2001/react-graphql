@@ -1,4 +1,7 @@
 import React, { useReducer, ChangeEvent, SyntheticEvent } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { createJob } from "../utils";
 
 interface JobFormProps {}
 
@@ -9,6 +12,8 @@ interface FormData {
 }
 
 const JobForm: React.FC<JobFormProps> = (props) => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useReducer(
     (prev: FormData, next: Partial<FormData>) => {
       return { ...prev, ...next };
@@ -23,8 +28,13 @@ const JobForm: React.FC<JobFormProps> = (props) => {
     setFormData({ [name]: value });
   };
 
-  const handleClick = (e: SyntheticEvent) => {
+  const handleClick = async (e: SyntheticEvent) => {
     e.preventDefault();
+    const { title, description } = formData;
+
+    await createJob({ title, description }).then((job) => {
+      navigate(`/jobs/${job.id}`);
+    });
   };
 
   const { title, description } = formData;

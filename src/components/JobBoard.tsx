@@ -1,8 +1,24 @@
+import { useEffect, useState } from "react";
 import JobList from "./JobList";
 
-import { jobs } from "../data/fake-data";
+import { loadJobs } from "../utils";
 
 const JobBoard = () => {
+  const [jobs, setJobs] = useState([]);
+
+  useEffect(() => {
+    const getJobs = async () => {
+      try {
+        const jobs = await loadJobs();
+        setJobs(jobs);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    getJobs();
+  }, []);
+
   return (
     <div>
       <h1 className="title">Job Board</h1>
