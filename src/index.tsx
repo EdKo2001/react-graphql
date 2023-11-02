@@ -4,13 +4,19 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 import App from "./App";
 
+import { ApolloProvider } from "./utils";
+
 import "bulma/css/bulma.css";
 
-const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
 root.render(
-    <React.StrictMode>
-        <Router>
-            <App />
-        </Router>
-    </React.StrictMode>
+  <React.StrictMode>
+    <ApolloProvider>
+      <Router>
+        <App />
+      </Router>
+    </ApolloProvider>
+  </React.StrictMode>
 );
